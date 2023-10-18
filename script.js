@@ -10,17 +10,23 @@ $(document).ready(function() {
 
     function findReleaseDate(movie) {
         $.getJSON(URL, function(data) {
-            // Default message
+        
             var releaseDate = "Release date not found."; 
 
             // loop through the movies 
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].name === movie) {
-                    releaseDate = data[i]["release-date"];
+            // for (var i = 0; i < data.length; i++) {
+            //     if (data[i].name === movie) {
+            //         releaseDate = data[i]["release-date"];
+            //         break;
+            //     }
+            // }
+
+            for(var key in data){
+                if(data[key].name === movie){
+                    releaseDate = data[key]["release-date"]
                     break;
                 }
             }
-
 
             $("#release-date").text("Release Date: " + releaseDate);
         });
